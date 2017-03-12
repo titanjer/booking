@@ -85,6 +85,8 @@ def input_data_mongo():
 		print ('failer')
 
 
+def input_demo_hotel():
+	
 
 
 # ======================================
