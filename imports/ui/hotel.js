@@ -5,14 +5,37 @@ import './hotel.html';
 
 
 Router.route('/:id', function(){
-  console.log(this.params.id);
+  const hotel = Hotels.findOne({id: this.params.id});
+  console.log(hotel);
+
   this.render('Hotel', {
-    'data': () => Hotels.findOne({id: this.params.id })
+    'data': () => Hotels.findOne({id: this.params.id})
+  });
+
+  GoogleMaps.load({
+    v: '3', 
+    key: 'AIzaSyCP6PBwaDx7ePiSzPMCyAzh6IXMtfKQBkk', 
+    libraries: 'geometry,places'
+  });
+
+  GoogleMaps.ready('souvenirs', (map) => {
+    console.log('gg');
   });
 });
 
 
-Template.Hotels.helpers({});
+Template.Hotel.helpers({
+  souvenirsMapOptions: () => {
+    if (GoogleMaps.loaded()) {
+      const hotel = Template.instance().data;
+      console.log(hotel.lat, hotel.lng);
+      return {
+        center: new google.maps.LatLng(hotel.lat, hotel.lng),
+        zoom: 16
+      }
+    } 
+  }
+});
 
 
-Template.Hotels.events({});
+Template.Hotel.events({});
