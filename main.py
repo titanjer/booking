@@ -1,14 +1,11 @@
-import urllib 
 from urllib.request import urlopen
 import requests
 from bs4 import BeautifulSoup
-import lxml
-import urllib, json
+import urllib, json, lxml
 import pandas as pd, numpy as np
 from urllib.parse   import quote
 import pymongo
 from pymongo import MongoClient
-import requests
 
 
 
@@ -31,7 +28,7 @@ def grab_hotel_pic_json(user,key):
 	return response.json()
 	
 
-def grab_hotel_list():
+def get_hotel_list():
 
 	response = grab_hotel_list_json(user,key)
 	output = [[] for k in range(0,8)]
@@ -64,10 +61,33 @@ def get_hotel_photo():
 	return df_photo_
       
 
-	
+def hotel_data():
+	hotel_list_data  = get_hotel_list()
+	print (hotel_list_data.head(3))
+	hotel_photo = get_hotel_photo()
+	print (hotel_photo.head(3))
+	df_final = pd.merge(hotel_list_data,hotel_photo,  how='left',on = 'hotel_id').sort('url_max300')
+	print (df_final)
+	print ('merge OK')
+	df_final_json = json.loads(df_final.to_json(orient='records'))
+	print (df_final_json)
+	return df_final , df_final_json
 
 
 
+def input_data_mongo():
+	df, df_json = hotel_data()
+	clinet, db = connect_meteor_mongo()
+	try:
+		db.hotels.insert(df_json)
+		print ('insert OK ')
+	except:
+		print ('failer')
+
+
+
+
+# ======================================
 
 def connect_mongo():
 	client = MongoClient('localhost', 27017)
@@ -85,9 +105,8 @@ def connect_meteor_mongo():
 
 
 
+input_data_mongo()
 
-#get_hotel_photo()
-grab_hotel_list()
 
 
 
