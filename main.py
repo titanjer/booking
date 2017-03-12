@@ -1,6 +1,6 @@
 import requests
 import json, lxml
-import pandas as pd, numpy as np
+import pandas as pd
 import pymongo
 from pymongo import MongoClient
 import pickle
