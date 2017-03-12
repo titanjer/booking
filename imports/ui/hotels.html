@@ -1,0 +1,27 @@
+<template name="Hotels">
+  <div class="container">
+    <header>
+      <h3 class="indigo-text text-darken-4">Hotels</h3>
+    </header>
+ 
+    <ul class="collection">
+      {{#each hotels}}
+        <li class="collection-item avatar">
+          <img src="images/{{ img }}" alt="" class="circle">
+          <span class="title">{{ name }}</span>
+          <p>{{ lat }}, {{ lng }}</p>
+          {{#if buy}}
+            <a href="/{{ id }}" class="secondary-content">
+              <i class="material-icons red-text">shop</i>
+            </a>
+          {{else}}
+            <a href="/{{ id }}" class="secondary-content">
+              <i class="material-icons blue-text">send</i>
+            </a>
+          {{/if}}
+        </li> 
+      {{/each}}
+    </ul>
+
+  </div>
+</template>

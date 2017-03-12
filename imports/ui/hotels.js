@@ -1,17 +1,19 @@
 import { Template } from 'meteor/templating';
 
 import { Hotels } from '../api/hotels.js';
- 
-import './hotel.js';
-
-import './body.html';
+import './hotels.html';
 
 
-Template.body.helpers({
+Router.route('/', function(){
+  this.render('Hotels');
+});
+
+
+Template.Hotels.helpers({
   hotels() {
     return Hotels.find({});
   }
 });
 
 
-Template.body.events({});
+Template.Hotels.events({});
