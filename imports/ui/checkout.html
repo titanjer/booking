@@ -1,22 +1,12 @@
-<template name="Hotel">
+<template name="Checkout">
   <div class="container">
 
     <header>
       <h3 class="indigo-text text-darken-4">
         {{ name }}
         {{#if buy}}<i class="material-icons red-text">shop</i>{{/if}}
-        <span class="right" style="font-size:18px">
-          <a class="waves-effect waves-light btn pink" href="/{{ id }}/checkout">Buy</a>
-        </span>
       </h3>
     </header>
-
-    <div class="row">
-      <h5 class="indigo-text text-darken-4">{{#if souvenirs}}Souvenirs{{else}}Location{{/if}}</h5>
-      <div class="col s12" style="height:300px">
-        {{> googleMap name="souvenirs" options=souvenirsMapOptions}}
-      </div>
-    </div>
 
     {{#if goods}}
       <div class="row">
@@ -25,7 +15,7 @@
           <div class="col s4">
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{ img }}">
+                <img class="activator" src="/images/{{img}}">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ name }}<i class="material-icons right">more_vert</i></span>
