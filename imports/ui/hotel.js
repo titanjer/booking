@@ -20,6 +20,16 @@ Router.route('/:id', function(){
       position: map.options.center,
       map: map.instance
     });
+    const hotel = Hotels.findOne({id: this.params.id});
+    if (hotel.souvenirs) {
+      hotel.souvenirs.forEach(function(s, index){
+        console.log(s.lat, s.lng);
+        let marker = new google.maps.Marker({
+          position: new google.maps.LatLng(s.lat, s.lng),
+          map: map.instance
+        });
+      }); 
+    }
   });
 });
 

@@ -13,7 +13,7 @@ key = '8hqNW6HtfU'
 
 def grab_hotel_list_json(user,key):
 	url = 'https://distribution-xml.booking.com/json/bookings.getHotels?city_ids=-2637882'
-	response = requests.get(url, auth = ( user , key )) 
+	response = requests.get(url, auth = ( user , key ))
 	print (response.json())
 	return response.json()
 
@@ -21,10 +21,10 @@ def grab_hotel_list_json(user,key):
 
 def grab_hotel_pic_json(user,key):
 	url = 'https://distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos?city_ids=-2637882'
-	response = requests.get(url, auth = ( user , key )) 
+	response = requests.get(url, auth = ( user , key ))
 	print (response.json())
 	return response.json()
-	
+
 
 def get_hotel_list():
 
@@ -45,7 +45,7 @@ def get_hotel_list():
 	return df_
 
 def get_hotel_photo():
-	
+
 	response = grab_hotel_pic_json(user,key)
 	output_photo = [[] for k in range(0,3)]
 	for count, item in reversed(list(enumerate(response))):
@@ -57,7 +57,7 @@ def get_hotel_photo():
 	df_photo_ = df_photo.groupby('hotel_id').first().reset_index()
 	print (df_photo_.head())
 	return df_photo_
-      
+
 
 def hotel_data():
 	hotel_list_data  = get_hotel_list()
@@ -85,8 +85,8 @@ def input_data_mongo():
 
 def input_demo_hotel():
 	clinet, db = connect_meteor_mongo()
-	with open('demo_data', 'rb') as f:
-		demo_data = pickle.load(f)
+	with open('demo_data.json', 'rb') as f:
+		demo_data = json.load(f)
 	for item  in demo_data:
 		print (item)
 		db.hotels.insert(item)
@@ -107,7 +107,7 @@ def connect_meteor_mongo():
 	print (client.database_names())
 	db = client.meteor
 	print (db.hotels.find_one())
-	return client, db 
+	return client, db
 
 
 
