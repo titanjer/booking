@@ -1,15 +1,39 @@
 <template name="Hotel">
   <div class="container">
+
     <header>
       <h3 class="indigo-text text-darken-4">
         {{ name }}
         {{#if buy}}<i class="material-icons red-text">shop</i>{{/if}}
       </h3>
     </header>
+
     <div class="row">
+      <h5 class="indigo-text text-darken-4">Souvenirs</h5>
       <div class="col s12" style="height:300px">
         {{> googleMap name="souvenirs" options=souvenirsMapOptions}}
       </div>
+    </div>
+
+    <div class="row">
+      <h5 class="indigo-text text-darken-4">Top Goods</h5>
+      {{#each goods}}
+        <div class="col s4">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="/images/{{img}}">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">{{ name }}<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">This is a link</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">{{ name }}<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
+      {{/each}}
     </div>
   </div>
 </template>
