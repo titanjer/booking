@@ -1,9 +1,6 @@
-from urllib.request import urlopen
 import requests
-from bs4 import BeautifulSoup
-import urllib, json, lxml
+import json, lxml
 import pandas as pd, numpy as np
-from urllib.parse   import quote
 import pymongo
 from pymongo import MongoClient
 import pickle
