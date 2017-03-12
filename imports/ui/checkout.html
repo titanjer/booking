@@ -1,34 +1,48 @@
 <template name="Checkout">
   <div class="container">
 
-    <header>
-      <h3 class="indigo-text text-darken-4">
-        {{ name }}
-        {{#if buy}}<i class="material-icons red-text">shop</i>{{/if}}
-      </h3>
-    </header>
-
-    {{#if goods}}
+    {{#if hotel.goods}}
       <div class="row">
-        <h5 class="indigo-text text-darken-4">Top Goods</h5>
-        {{#each goods}}
+        <h4 class="indigo-text text-darken-4">Shopping Together?</h4>
+        {{#each hotel.goods}}
           <div class="col s4">
             <div class="card">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/images/{{img}}">
+              <div class="card-image">
+                <img class="activator" src="{{ img }}">
+                <a class="btn-floating halfway-fab waves-effect waves-light red btn-large"><i class="material-icons add-good" id="{{@index}}">add</i></a>
               </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ name }}<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">This is a link</a></p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{ name }}<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                <span class="card-title activator grey-text text-darken-4">{{ name }}</span>
+                <p><a href="{{ url }}">{{ url }}</a></p>
               </div>
             </div>
           </div>
         {{/each}}
       </div>
     {{/if}}
+
+    <div class="row">
+      <h4 class="indigo-text text-darken-4">
+        {{ hotel.name }}
+        {{#if hotel.buy}}<i class="material-icons red-text">shop</i>{{/if}}
+      </h4>
+
+    </div>
+
+    {{#if shops}}
+      <div class="row">
+        <ul class="collection">
+          {{#each shops}}
+          <li class="collection-item"><span class="badge">{{ counter }}</span>{{ name }}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    <div class="row">
+      <span class="right" style="font-size:18px">
+        <a class="waves-effect waves-light btn pink" href="/{{ hotel.id }}/success"><i class="material-icons right">thumb_up</i>Confirm</a>
+      </span>
+    </div>
   </div>
 </template>

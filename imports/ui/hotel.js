@@ -5,8 +5,6 @@ import './hotel.html';
 
 
 Router.route('/:id', function(){
-  const hotel = Hotels.findOne({id: this.params.id});
-
   this.render('Hotel', {
     'data': () => Hotels.findOne({id: this.params.id})
   });
