@@ -6,7 +6,6 @@ import './hotel.html';
 
 Router.route('/:id', function(){
   const hotel = Hotels.findOne({id: this.params.id});
-  console.log(hotel);
 
   this.render('Hotel', {
     'data': () => Hotels.findOne({id: this.params.id})
@@ -19,7 +18,10 @@ Router.route('/:id', function(){
   });
 
   GoogleMaps.ready('souvenirs', (map) => {
-    console.log('gg');
+    const marker = new google.maps.Marker({
+      position: map.options.center,
+      map: map.instance
+    });
   });
 });
 
@@ -28,10 +30,9 @@ Template.Hotel.helpers({
   souvenirsMapOptions: () => {
     if (GoogleMaps.loaded()) {
       const hotel = Template.instance().data;
-      console.log(hotel.lat, hotel.lng);
       return {
         center: new google.maps.LatLng(hotel.lat, hotel.lng),
-        zoom: 16
+        zoom: 15
       }
     } 
   }
