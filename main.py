@@ -6,6 +6,7 @@ import pandas as pd, numpy as np
 from urllib.parse   import quote
 import pymongo
 from pymongo import MongoClient
+import pickle
 
 
 
@@ -85,6 +86,14 @@ def input_data_mongo():
 		print ('failer')
 
 
+def input_demo_hotel():
+	clinet, db = connect_meteor_mongo()
+	with open('demo_data', 'rb') as f:
+		demo_data = pickle.load(f)
+	for item  in demo_data:
+		print (item)
+		db.hotels.insert(item)
+
 
 
 # ======================================
@@ -105,7 +114,7 @@ def connect_meteor_mongo():
 
 
 
-input_data_mongo()
+input_demo_hotel()
 
 
 

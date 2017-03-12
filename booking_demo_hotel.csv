@@ -1,0 +1,5 @@
+area ,name ,address,lat ,lng,id,img,souvenirs,goods
+Zhongzheng ,Hotel Midtown Richardson,"No.4, Xiushan St., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)",25.04362,121.509407,1324124,1324124.jpg,"[{name : ""Hunan Chinese Bacon"",lat:25.03, lng:141.52, price:100 } , {name : ""FJ Pineapple Cake, ChiaTe Backery"",lat:25.044, lng:121.52, price:200} ]","[{name: 'Bacon', img: ""https://www.dropbox.com/s/eea68os0dddc5em/Y008024000001_2_1.jpg?dl=0"", desc: ""100""},{name: 'cake', img: ""https://www.dropbox.com/s/b5u839jtwpx7y8c/Y010967000001_1_1.jpg?dl=0"", desc: ""40""}]"
+Nangang ,Forward Hotel Taipei Nangang,"No. 23, Sanchong Road, Nangang District, 11560 Taipei City",25.059,121.61,1475871,1475871.jpg,"[ChiaTe Backery, Tafang foods,FJ peanut butter]","{'name': 'cake', img: ""https://www.dropbox.com/s/b5u839jtwpx7y8c/Y010967000001_1_1.jpg?dl=0"", desc: ""40""}]"
+Zhongshan¾,Linsen Loft,"No. 500, Linsen N. Road, Zhongshan District",25.061,121.526,2171075,2171075.jpg,,
+Banqiao ,JunLi Hotel,"No. 16, Gongyuan Street",25.0091,121.463,2141659,2141659.jpg,,
